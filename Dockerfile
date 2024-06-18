@@ -3,6 +3,7 @@ FROM golang:1.18-alpine3.15 as builder
 RUN mkdir /build
 ADD . /build/
 WORKDIR /build
+RUN go mod tidy
 RUN CGO_ENABLED=0 GOOS=linux go build -a cmd/main.go
 
 
